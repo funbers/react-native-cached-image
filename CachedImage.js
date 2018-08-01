@@ -141,12 +141,14 @@ class CachedImage extends React.Component {
         const url = _.get(source, ['uri'], null);
         const options = this.getImageCacheManagerOptions();
         const imageCacheManager = this.getImageCacheManager();
+        const onComplete = this.props.onComplete || _.noop;
 
         imageCacheManager.downloadAndCacheUrl(url, options)
             .then(cachedImagePath => {
                 this.safeSetState({
                     cachedImagePath
                 });
+                onComplete(true);
             })
             .catch(err => {
                 // console.warn(err);
@@ -154,6 +156,7 @@ class CachedImage extends React.Component {
                     cachedImagePath: null,
                     isCacheable: false
                 });
+                onComplete(false);
             });
     }
 
