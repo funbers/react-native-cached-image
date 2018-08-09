@@ -148,7 +148,7 @@ class CachedImage extends React.Component {
                 this.safeSetState({
                     cachedImagePath
                 });
-                onComplete(true);
+                onComplete(cachedImagePath);
             })
             .catch(err => {
                 // console.warn(err);
