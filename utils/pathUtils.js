@@ -4,7 +4,11 @@ const _ = require('lodash');
 const URL = require('url-parse');
 const SHA1 = require("crypto-js/sha1");
 
-const defaultImageTypes = ['png', 'jpeg', 'jpg', 'gif', 'bmp', 'tiff', 'tif'];
+const defaultImageTypes = ['png', 'jpeg', 'jpg', 'gif', 'bmp', 'tiff', 'tif',
+// RH: Added 'mp4' - hacky way to get it to cache video.
+// TODO: Create a more generic cache
+                           'm4v','mp4','mov','3gpp',
+                           'wav','mp3'];
 
 function serializeObjectKeys(obj) {
     return _(obj)
